@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Minori from "@/components/Minori";
 import { Answers, generateChecklist, saveState } from "@/lib/logic";
@@ -65,6 +65,7 @@ const QUESTIONS: Question[] = [
 export default function Home() {
   const router = useRouter();
   const [step, setStep] = useState(-1); // -1=LP, 0..5=質問, 6=日付入力
+  const dateInputRef = useRef<HTMLInputElement>(null);
   const [answers, setAnswers] = useState<Answers>({ A: "", B: "", C: "", D: "", E: "", F: [], movingDate: "" });
 
   const taskCount = useMemo(
@@ -139,6 +140,7 @@ export default function Home() {
         <footer className="mt-16 border-t border-cocoa/10 pt-6 text-center text-xs text-cocoa/50">
           手続きの内容は自治体により異なる場合があります。最新情報は必ず各自治体の公式サイトでご確認ください。<br />
           <span className="mt-3 flex justify-center gap-4">
+            <a href="/area" className="underline">地域から探す</a>
             <a href="/column" className="underline">コラム</a>
             <a href="/about" className="underline">運営者情報</a>
             <a href="/privacy" className="underline">プライバシーポリシー</a>
@@ -160,10 +162,12 @@ export default function Home() {
           <h2 className="font-maru mt-4 text-xl font-bold">引っ越し予定日は決まってる?</h2>
           <p className="mt-2 text-sm text-cocoa/70">期限のカウントダウンに使うよ(あとで変更OK)</p>
           <input
+            ref={dateInputRef}
             type="date"
             value={answers.movingDate}
             onChange={(e) => setAnswers((p) => ({ ...p, movingDate: e.target.value }))}
-            className="mt-6 w-full rounded-2xl border-2 border-piyo bg-white p-4 text-center text-lg"
+            onClick={() => dateInputRef.current?.showPicker?.()}
+            className="mt-6 w-full rounded-2xl border-2 border-piyo bg-white p-4 text-lg"
           />
           <div className="mt-8 rounded-2xl bg-piyo/25 p-4">
             <p className="font-maru text-sm">あなたに必要な手続きは…</p>

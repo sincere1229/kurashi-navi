@@ -6,7 +6,8 @@ import Minori from "@/components/Minori";
 import OfferBox from "@/components/OfferBox";
 import SisterSiteCard from "@/components/SisterSiteCard";
 import LineRegisterButton from "@/components/LineRegisterButton";
-import { MAIN_OFFERS } from "@/lib/affiliates";
+import CitySelectorCard from "@/components/CitySelectorCard";
+import { MAIN_OFFERS, TASK_OFFERS, TASK_OFFER_MORE_LINK, DEFAULT_TASK_OFFERS } from "@/lib/affiliates";
 import { DEADLINE_LABEL, DEADLINE_ORDER, Task } from "@/lib/taskMaster";
 import {
   SavedState, daysLeft, dueDateOf, fmtDate, loadState, piyokoProgressMessage,
@@ -205,6 +206,8 @@ export default function Checklist() {
         <span className="ml-auto text-cocoa/40">›</span>
       </Link>
 
+      <CitySelectorCard state={state} onUpdate={setState} />
+
       {/* 地域情報への導線 */}
       <Link
         href="/area"
@@ -258,6 +261,21 @@ export default function Checklist() {
               <p className="font-maru text-sm font-bold">🌱 みのりのアドバイス</p>
               <p className="mt-1 text-sm leading-relaxed">{openTask.advice}</p>
             </div>
+
+            {(() => {
+              const specific = TASK_OFFERS[openTask.id];
+              const offersToShow = specific && specific.length > 0 ? specific : DEFAULT_TASK_OFFERS;
+              const title = specific && specific.length > 0 ? "この手続きに関連するサービス" : "🌱 引っ越し準備に役立つサービス";
+              return <OfferBox title={title} offers={offersToShow} />;
+            })()}
+            {TASK_OFFER_MORE_LINK[openTask.id] && (
+              <Link
+                href={TASK_OFFER_MORE_LINK[openTask.id].href}
+                className="mt-2 block text-center text-xs text-cocoa/60 underline"
+              >
+                {TASK_OFFER_MORE_LINK[openTask.id].label}
+              </Link>
+            )}
 
             <button
               onClick={() => { toggle(openTask.id); setOpenTask(null); }}

@@ -12,7 +12,14 @@ export type UserTask = {
   completedAt?: string;
 };
 
-export type SavedState = { answers: Answers; userTasks: UserTask[] };
+export type CitySelection = {
+  departurePref?: string;
+  departureCity?: string;
+  destPref?: string;
+  destCity?: string;
+};
+
+export type SavedState = { answers: Answers; userTasks: UserTask[]; cities?: CitySelection };
 
 const STORAGE_KEY = "kurashi_navi_v1";
 

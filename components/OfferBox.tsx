@@ -1,11 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import { Affiliate } from "@/lib/affiliates";
 
 // PR枠。urlが空の項目は表示しない(A8審査中でも安全に運用できる)
 // bannerImageUrlがある案件は画像広告として、無ければテキストカードとして表示
+// バナー画像の読み込みに失敗した場合(壊れた画像アイコンが出る事態)は、
+// 自動でテキストカード表示に切り替える(onErrorフォールバック)
 // impressionUrlがある案件は、1×1の計測ピクセルを自動で埋め込む
 export default function OfferBox({ title, offers }: { title: string; offers: Affiliate[] }) {
+  const [broken, setBroken] = useState<Record<string, boolean>>({});
   const active = offers.filter((o) => o.url);
   if (active.length === 0) return null;
+
   return (
     <section className="mt-8 rounded-2xl border border-cocoa/10 bg-white p-4">
       <div className="flex items-center justify-between">
@@ -14,7 +21,7 @@ export default function OfferBox({ title, offers }: { title: string; offers: Aff
       </div>
       <div className="mt-3 space-y-3">
         {active.map((o) =>
-          o.bannerImageUrl ? (
+          o.bannerImageUrl && !broken[o.label] ? (
             <a
               key={o.label}
               href={o.url}
@@ -31,6 +38,7 @@ export default function OfferBox({ title, offers }: { title: string; offers: Aff
                 alt={o.label}
                 className="mx-auto block h-auto w-full max-w-[336px]"
                 loading="lazy"
+                onError={() => setBroken((prev) => ({ ...prev, [o.label]: true }))}
               />
             </a>
           ) : (

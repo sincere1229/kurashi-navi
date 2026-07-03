@@ -5,6 +5,7 @@ import Link from "next/link";
 import Minori from "@/components/Minori";
 import OfferBox from "@/components/OfferBox";
 import { AREA_OFFERS } from "@/lib/affiliates";
+import { TOPICS as GUIDE_TOPICS } from "@/lib/topics";
 import DATA from "@/lib/municipalities.json";
 
 type City = { p: string; c: string; k: string; u: string };
@@ -13,16 +14,13 @@ const CITIES: City[] = (DATA as any).cities;
 
 const AREA_KEY = "kurashi_navi_area_v1";
 
-// 「知りたいこと」→ Google検索リンクを自動生成(レベル1方式)
-const TOPICS: { emoji: string; label: string; q: string }[] = [
-  { emoji: "🗑", label: "ゴミの分別・収集日", q: "ゴミ 分別 収集日" },
+// ガイドページを持たないトピックのみ、検索リンクを自動生成(補完用)
+const SEARCH_ONLY_TOPICS: { emoji: string; label: string; q: string; maps?: boolean }[] = [
   { emoji: "🏥", label: "休日・夜間診療", q: "休日診療 夜間 救急" },
   { emoji: "🏫", label: "学区・小中学校", q: "学区 小学校 通学区域" },
-  { emoji: "👶", label: "子育て支援・手当", q: "子育て支援 児童手当 医療費助成" },
   { emoji: "🌊", label: "ハザードマップ", q: "ハザードマップ" },
-  { emoji: "📋", label: "転入届・引っ越し手続き", q: "転入届 引っ越し 手続き" },
   { emoji: "🚌", label: "コミュニティバス・交通", q: "コミュニティバス 公共交通" },
-  { emoji: "🛒", label: "スーパー・買い物", q: "スーパー", maps: true } as any,
+  { emoji: "🛒", label: "スーパー・買い物", q: "スーパー", maps: true },
 ];
 
 function searchUrl(pref: string, city: string, q: string, maps?: boolean) {
@@ -36,7 +34,6 @@ export default function AreaPage() {
   const [pref, setPref] = useState("");
   const [city, setCity] = useState("");
 
-  // 前回選択を復元
   useEffect(() => {
     try {
       const saved = localStorage.getItem(AREA_KEY);
@@ -112,11 +109,28 @@ export default function AreaPage() {
             </a>
           )}
 
-          {/* 知りたいことリンク */}
+          {/* 手続きガイド(自サイトの実ページ・内部リンク) */}
           <section className="mt-5">
-            <h2 className="font-maru text-sm font-bold text-cocoa/80">🔎 {selected.c}のことを調べる</h2>
+            <h2 className="font-maru text-sm font-bold text-cocoa/80">📝 {selected.c}の手続きガイド</h2>
             <div className="mt-2 grid grid-cols-2 gap-2">
-              {TOPICS.map((t: any) => (
+              {GUIDE_TOPICS.map((t) => (
+                <Link
+                  key={t.slug}
+                  href={`/guide/${encodeURIComponent(selected.p)}/${encodeURIComponent(selected.c)}/${t.slug}`}
+                  className="rounded-2xl bg-white p-3 shadow-sm transition active:scale-95"
+                >
+                  <span className="text-xl">{t.emoji}</span>
+                  <span className="mt-1 block text-sm font-bold leading-snug">{t.label}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* 知りたいこと(ガイド対象外はGoogle検索で補完) */}
+          <section className="mt-5">
+            <h2 className="font-maru text-sm font-bold text-cocoa/80">🔎 {selected.c}のことをもっと調べる</h2>
+            <div className="mt-2 grid grid-cols-2 gap-2">
+              {SEARCH_ONLY_TOPICS.map((t) => (
                 <a
                   key={t.label}
                   href={searchUrl(selected.p, selected.c, t.q, t.maps)}
