@@ -97,8 +97,10 @@ export default function Checklist() {
         <Link href="/" className="text-xs text-cocoa/60 underline">診断をやり直す</Link>
       </header>
 
+      <CitySelectorCard state={state} onUpdate={setState} />
+
       {/* みのり吹き出し+カウントダウン */}
-      <section className="flex items-start gap-3">
+      <section className="mt-4 flex items-start gap-3">
         <div className="shrink-0"><Minori size={64} /></div>
         <div className="relative bubble rounded-2xl bg-white p-3 text-sm shadow-sm">
           {daysToMove !== null && daysToMove >= 0 && (
@@ -205,8 +207,6 @@ export default function Checklist() {
         </span>
         <span className="ml-auto text-cocoa/40">›</span>
       </Link>
-
-      <CitySelectorCard state={state} onUpdate={setState} />
 
       {/* 地域情報への導線 */}
       <Link

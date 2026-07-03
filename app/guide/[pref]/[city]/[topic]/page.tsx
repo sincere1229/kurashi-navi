@@ -125,6 +125,23 @@ export default function GuidePage({ params }: { params: { pref: string; city: st
         ))}
       </section>
 
+      {/* 管轄窓口の検索リンク(免許・車庫証明のみ。データ化困難な管轄範囲は検索で補完) */}
+      {(topic.slug === "menkyo-jusho" || topic.slug === "shako-shomei") && (
+        <a
+          href={`https://www.google.com/search?q=${encodeURIComponent(`${city.p}${city.c} 管轄 警察署 ${topic.slug === "menkyo-jusho" ? "運転免許" : "車庫証明"}`)}`}
+          target="_blank"
+          rel="noopener"
+          className="mt-3 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition active:scale-95"
+        >
+          <span className="text-2xl">🚓</span>
+          <span className="min-w-0">
+            <span className="font-maru block font-bold">{city.c}の管轄警察署を調べる</span>
+            <span className="block text-xs text-cocoa/60">住所によって窓口が変わるため、検索結果でご確認ください</span>
+          </span>
+          <span className="ml-auto shrink-0 text-cocoa/40">›</span>
+        </a>
+      )}
+
       <OfferBox title="🌱 関連するサービス" offers={offers} />
 
       <Link
