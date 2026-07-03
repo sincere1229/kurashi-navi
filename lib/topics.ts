@@ -128,3 +128,9 @@ export const TOPICS: Topic[] = [
 export function topicBySlug(slug: string): Topic | undefined {
   return TOPICS.find((t) => t.slug === slug);
 }
+
+// taskId → 対応するトピック(1件)。チェックリストのタスク詳細から
+// 該当する/guideページへリンクするために使う。
+export function topicByTaskId(taskId: string): Topic | undefined {
+  return TOPICS.find((t) => t.taskIds.includes(taskId));
+}

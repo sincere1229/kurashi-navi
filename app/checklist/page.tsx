@@ -8,6 +8,7 @@ import SisterSiteCard from "@/components/SisterSiteCard";
 import LineRegisterButton from "@/components/LineRegisterButton";
 import CitySelectorCard from "@/components/CitySelectorCard";
 import { MAIN_OFFERS, TASK_OFFERS, TASK_OFFER_MORE_LINK, DEFAULT_TASK_OFFERS } from "@/lib/affiliates";
+import { topicByTaskId } from "@/lib/topics";
 import { DEADLINE_LABEL, DEADLINE_ORDER, Task } from "@/lib/taskMaster";
 import {
   SavedState, daysLeft, dueDateOf, fmtDate, loadState, piyokoProgressMessage,
@@ -261,6 +262,26 @@ export default function Checklist() {
               <p className="font-maru text-sm font-bold">🌱 みのりのアドバイス</p>
               <p className="mt-1 text-sm leading-relaxed">{openTask.advice}</p>
             </div>
+
+            {(() => {
+              const topic = topicByTaskId(openTask.id);
+              const destPref = state.cities?.destPref;
+              const destCity = state.cities?.destCity;
+              if (!topic || !destPref || !destCity) return null;
+              return (
+                <Link
+                  href={`/guide/${encodeURIComponent(destPref)}/${encodeURIComponent(destCity)}/${topic.slug}`}
+                  className="mt-3 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition active:scale-95"
+                >
+                  <span className="text-2xl">📍</span>
+                  <span className="min-w-0">
+                    <span className="font-maru block font-bold">{destCity}の詳しいガイドを見る</span>
+                    <span className="block text-xs text-cocoa/60">窓口・管轄の調べ方など、街ごとの詳細情報</span>
+                  </span>
+                  <span className="ml-auto shrink-0 text-cocoa/40">›</span>
+                </Link>
+              );
+            })()}
 
             {(() => {
               const specific = TASK_OFFERS[openTask.id];
