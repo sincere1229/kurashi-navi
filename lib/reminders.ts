@@ -17,7 +17,14 @@ export function reminderKindForToday(movingDate: string): ReminderKind | null {
 }
 
 // 仕様書第4章のテンプレートに準拠したメッセージ本文
+// 広告色を出さないため、リンクは常に「チェックリストに戻る」1本のみ。
+// アフィリエイトはリンク先のチェックリスト/コラム画面側(OfferBox)で提示する。
 export function reminderMessage(kind: ReminderKind, opts: { urgentTasks?: Task[] } = {}): string {
+  const body = reminderBody(kind, opts);
+  return `${body}\n\n▼ やることリストを見る\n${checklistUrl()}`;
+}
+
+function reminderBody(kind: ReminderKind, opts: { urgentTasks?: Task[] } = {}): string {
   switch (kind) {
     case "D-30":
       return "引っ越しまで、ちょうど1ヶ月だね🌱\n今月の山場は「引っ越し業者の予約」と「賃貸の解約連絡」。この2つは早いほどお金も選択肢も得するから、今週中がおすすめだよ。";
