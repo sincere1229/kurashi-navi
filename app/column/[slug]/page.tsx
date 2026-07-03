@@ -2,8 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Minori from "@/components/Minori";
 import OfferBox from "@/components/OfferBox";
+import A8ScriptBanner from "@/components/A8ScriptBanner";
+import SisterSiteCard from "@/components/SisterSiteCard";
 import { COLUMNS, columnBySlug } from "@/lib/columns";
-import { COLUMN_OFFERS } from "@/lib/affiliates";
+import { COLUMN_OFFERS, SCRIPT_ADS } from "@/lib/affiliates";
 import { SITE } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -21,6 +23,8 @@ export default function ColumnDetail({ params }: { params: { slug: string } }) {
 
   const offers = COLUMN_OFFERS[column.offerSlug] ?? [];
   const others = COLUMNS.filter((c) => c.slug !== column.slug).slice(0, 2);
+  // 電気コラムには地域限定のスクリプト型広告(東急でんき&ガス)も追加表示
+  const scriptAd = column.slug === "denki-kirikae" ? SCRIPT_ADS.tokyu_denki_gas : null;
 
   return (
     <main className="mx-auto max-w-md px-5 pb-20">
@@ -45,12 +49,20 @@ export default function ColumnDetail({ params }: { params: { slug: string } }) {
 
       <OfferBox title="🌱 この記事に関連するサービス" offers={offers} />
 
+      {scriptAd && (
+        <div className="mt-3">
+          <A8ScriptBanner ad={scriptAd} />
+        </div>
+      )}
+
       <Link
         href="/"
         className="font-maru mt-6 flex items-center justify-center gap-2 rounded-full bg-cocoa py-3.5 font-bold text-piyo shadow active:scale-95 transition"
       >
         あなた専用のやることリストを作る
       </Link>
+
+      <SisterSiteCard />
 
       {others.length > 0 && (
         <section className="mt-8">

@@ -101,3 +101,84 @@
 - moving(引っ越し見積もり)← 新規申請分。MAIN_OFFERSと同一案件でOK
 - electricity(電力切替)← 新規申請分
 - gas(ガス切替)← 新規申請分
+
+---
+
+## v1.5 追加分(バナー画像広告対応+駐車場コラム)
+
+### バナー画像広告(もしもアフィリエイト等)
+`lib/affiliates.ts` の各案件に `bannerImageUrl` / `bannerWidth` / `bannerHeight` を指定すると、テキストカードの代わりに画像バナーが表示されます。指定しなければ従来通りテキストカードです(混在OK)。
+```ts
+{
+  label: "案件名",
+  description: "",
+  url: "クリック用URL",
+  impressionUrl: "計測ピクセルURL(あれば)",
+  bannerImageUrl: "バナー画像URL",
+  bannerWidth: 336,
+  bannerHeight: 280,
+  emoji: "🅿️",
+}
+```
+
+### 新規コラム
+- 車・駐車場「新居の駐車場、賃貸契約と同時に探し始めていますか?」(chushajo-sagashi)
+- 月極駐車場案件(PMCマンスリーパーキング)をバナー広告として反映済み
+
+---
+
+## v1.6 追加分(A8バナー広告13件+回線比較コラム+姉妹サイト連携)
+
+### 反映したアフィリエイト案件
+- **引っ越し**:引越し侍(MAIN_OFFERS・movingコラム)、宅配型トランクルーム 宅トラ(movingコラム追加枠)
+- **不用品買取**:ECOクリーン(MAIN_OFFERS・wasteコラム)、クリエル出張買取(wasteコラム追加枠)
+- **電気**:ドコモでんき、enepi光熱費診断(electricityコラム・AREA_OFFERS)
+- **ガス**:enepiプロパンガス比較(gasコラム)
+- **インターネット回線**:SoftBank Air・BIGLOBE光・WiMAX・auひかり・フレッツ光・BB.excite光の6社を新設の`internet`枠にまとめ、新規コラム`/column/kaisen-hikaku`で比較記事として掲載。MAIN_OFFERSの回線ボタンはこのコラムへ誘導する形に変更
+
+### スクリプト型広告(A8ブランドセーフ広告)への対応
+`components/A8ScriptBanner.tsx` を新設。通常のimg広告と違い外部JSでバナーを描画する形式に対応。東急でんき&ガス(東急線沿線限定)を電気コラムに設置。今後同形式の案件が来たら `lib/affiliates.ts` の `SCRIPT_ADS` に追記するだけでOK。
+
+### 姉妹サイト連携
+`components/SisterSiteCard.tsx` を新設。`lib/affiliates.ts` の `SISTER_SITES` にサイトを追加するだけで、チェックリスト画面・コラム記事末尾に誘導カードが表示される。現在「やさしい介護ナビ」(kaigo-anshin.net)を設置済み。他のnaviサイトを追加する場合もここに1行追記でOK。
+
+### 未提携(空欄のまま)
+- car(自動車保険)のみ引き続き未提携
+
+---
+
+## v1.7 追加分(LINE登録+個別リマインド機能)
+
+### 何が変わったか
+- チェックリスト画面に「このリストはこの端末に保存されています」という説明文を追加(既存のlocalStorage保存の分かりにくさを解消)
+- 「LINEで登録する」ボタンを追加。登録すると:
+  - 別の端末・機種変更後でも続きが見られる(Supabaseにデータを保存)
+  - 引っ越し日を基準に、みのりからLINEで個別リマインドが届く(1ヶ月前・1週間前・前日・当日・3日後の5タイミング。仕様書第4章のメッセージをそのまま使用)
+- `NEXT_PUBLIC_LIFF_ID` が未設定の間はボタンごと非表示になるので、準備が整うまでは今まで通り安全に公開できます(アフィリエイト枠と同じ「空なら非表示」の考え方)
+
+### 恵子さんに準備していただくもの(3つ)
+
+**① LINE Developersでチャネルを2つ作成**
+既存の「Twinkle Lab」等のLINE公式アカウントとは別に、暮らしナビ専用のチャネルを作るのがおすすめです(混線防止)。
+1. [LINE Developers Console](https://developers.line.biz/console/)でプロバイダーを開く(既存のものでOK)
+2. 「Messaging API」チャネルを新規作成 → 暮らしナビ用の公式アカウントができます
+   - チャネルアクセストークン(長期)を発行 → `LINE_CHANNEL_ACCESS_TOKEN`
+   - チャネルシークレット → `LINE_CHANNEL_SECRET`
+   - Webhook URLに `https://kurashi-navi.com/api/line/webhook` を設定、Webhookを「利用する」に
+3. 同じプロバイダーで「LINEログイン」チャネルも新規作成
+   - チャネルID → `LINE_LOGIN_CHANNEL_ID`
+   - 「LIFF」タブでLIFFアプリを追加(エンドポイントURL: `https://kurashi-navi.com/checklist`、サイズ:Full)→ 発行されたLIFF ID → `NEXT_PUBLIC_LIFF_ID`
+
+**② Supabaseプロジェクトを作成**
+1. [supabase.com](https://supabase.com)で新規プロジェクト作成(既存のTwinkle Knowledge OS等と同じアカウントでOK、プロジェクトは分けるのがおすすめ)
+2. SQL Editorで `supabase/schema.sql` の中身をそのまま実行(テーブルが3つ作られます)
+3. Settings → API から:
+   - Project URL → `SUPABASE_URL`
+   - service_role key(secretの方) → `SUPABASE_SERVICE_ROLE_KEY`
+
+**③ Vercelに環境変数を設定**
+`.env.example` を参考に、上記で取得した値をVercelの Settings → Environment Variables に登録してください。`CRON_SECRET` は任意の適当な文字列でOKです(推測されにくいものを)。
+
+### 注意点
+- Vercel Cron(`vercel.json`)は毎日1回リマインドを送信します。**Vercelの無料プランではCronの実行頻度に制限がある場合があるため**、Proプラン推奨、または外部の無料Cronサービス(cron-job.org等)から `https://kurashi-navi.com/api/cron/reminder` を呼ぶ代替も可能です(その場合はAuthorizationヘッダーに `Bearer {CRON_SECRET}` を付けてもらう必要があります)
+- 上記3点が未設定でも、サイト自体は今まで通り正常に動きます(LINE登録ボタンが表示されないだけ)

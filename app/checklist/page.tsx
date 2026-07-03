@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Minori from "@/components/Minori";
 import OfferBox from "@/components/OfferBox";
+import SisterSiteCard from "@/components/SisterSiteCard";
+import LineRegisterButton from "@/components/LineRegisterButton";
 import { MAIN_OFFERS } from "@/lib/affiliates";
 import { DEADLINE_LABEL, DEADLINE_ORDER, Task } from "@/lib/taskMaster";
 import {
@@ -114,7 +116,14 @@ export default function Checklist() {
         <div className="mt-1 h-3 overflow-hidden rounded-full bg-cocoa/10">
           <div className="h-full rounded-full bg-piyodeep transition-all duration-500" style={{ width: `${rate}%` }} />
         </div>
+        <p className="mt-2 text-[11px] text-cocoa/50">
+          💾 このリストはこの端末に保存されています。次に開いた時もそのまま続きから見られます。
+        </p>
       </section>
+
+      <div className="mt-3">
+        <LineRegisterButton />
+      </div>
 
       {/* フィルタ */}
       <section className="mt-4 flex gap-2 overflow-x-auto pb-1">
@@ -208,6 +217,8 @@ export default function Checklist() {
         </span>
         <span className="ml-auto text-cocoa/40">›</span>
       </Link>
+
+      <SisterSiteCard />
 
       {/* 褒めトースト */}
       {praise && (
