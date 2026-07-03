@@ -80,3 +80,24 @@
 1. 新しい表情/ポーズの画像を `public/characters/` に追加
 2. `components/Minori.tsx` の `Variant` 型と `SRC` に1行追加
 3. 呼び出し側で `variant="新しい名前"` を指定
+
+---
+
+## v1.4 追加分(お役立ちコラム+アフィリエイト誘導)
+
+### 実装内容
+- `/column`(コラム一覧)+ `/column/[slug]`(記事詳細)を追加。5本収録:
+  - 不用品・ゴミ(furiwake-taisho)/ 車・免許(kuruma-tetsuzuki)/ 引っ越し準備(hikkoshi-mitsumori)/ 電気(denki-kirikae)/ ガス(gas-kirikae)
+- 各記事は「困りごと→メリットのある選択肢→みのりのひとこと」の3段構成。記事末尾にテーマ専用のPR枠(OfferBox)を表示
+- トップページのフッター、チェックリスト画面からコラム一覧への導線を追加
+
+### コラムの追加方法
+`lib/columns.ts` の `COLUMNS` 配列に1オブジェクト追加するだけ。`offerSlug`は`lib/affiliates.ts`の`COLUMN_OFFERS`のキーと対応させる(新テーマなら両方に追記)。
+
+### アフィリエイトURLの反映先(現状すべて空・非表示)
+`lib/affiliates.ts`の`COLUMN_OFFERS`:
+- waste(不用品買取・回収)← 実家どうするナビの提携を副サイト経由で
+- car(自動車保険)← 新規申請分
+- moving(引っ越し見積もり)← 新規申請分。MAIN_OFFERSと同一案件でOK
+- electricity(電力切替)← 新規申請分
+- gas(ガス切替)← 新規申請分

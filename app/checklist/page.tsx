@@ -183,6 +183,19 @@ export default function Checklist() {
       {/* PR枠(主砲:引っ越し直結・高単価) */}
       <OfferBox title="🚚 引っ越し準備に役立つサービス" offers={MAIN_OFFERS} />
 
+      {/* コラムへの導線 */}
+      <Link
+        href="/column"
+        className="mt-3 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition active:scale-95"
+      >
+        <span className="text-2xl">📖</span>
+        <span>
+          <span className="font-maru block font-bold">お役立ちコラムを読む</span>
+          <span className="block text-xs text-cocoa/60">ゴミ・車・電気・ガスの「得する話」</span>
+        </span>
+        <span className="ml-auto text-cocoa/40">›</span>
+      </Link>
+
       {/* 地域情報への導線 */}
       <Link
         href="/area"

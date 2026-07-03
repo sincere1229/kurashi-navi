@@ -139,6 +139,7 @@ export default function Home() {
         <footer className="mt-16 border-t border-cocoa/10 pt-6 text-center text-xs text-cocoa/50">
           手続きの内容は自治体により異なる場合があります。最新情報は必ず各自治体の公式サイトでご確認ください。<br />
           <span className="mt-3 flex justify-center gap-4">
+            <a href="/column" className="underline">コラム</a>
             <a href="/about" className="underline">運営者情報</a>
             <a href="/privacy" className="underline">プライバシーポリシー</a>
             <a href="/contact" className="underline">お問い合わせ</a>

@@ -48,3 +48,47 @@ export const AREA_OFFERS: Affiliate[] = [
     emoji: "💡",
   },
 ];
+
+// ---- コラム専用枠(テーマごとの記事下部に表示) ----
+export const COLUMN_OFFERS: Record<string, Affiliate[]> = {
+  waste: [
+    {
+      label: "不用品を売る・回収してもらう",
+      description: "粗大ごみに出す前に、査定してもらうと差が出ます",
+      url: "", // ← A8 不用品買取・回収案件(実家どうするナビの提携を副サイトで使用)
+      emoji: "♻️",
+    },
+  ],
+  car: [
+    {
+      label: "自動車保険の見積もりを比較",
+      description: "住所変更のタイミングは、プラン見直しの好機です",
+      url: "", // ← A8 自動車保険一括見積もり案件
+      emoji: "🚗",
+    },
+  ],
+  moving: [
+    {
+      label: "引っ越し料金を一括見積もり",
+      description: "複数社の比較で数万円変わることも。早いほど得です",
+      url: "", // ← A8「引越し侍」等(MAIN_OFFERSと同一案件)
+      emoji: "🚚",
+    },
+  ],
+  electricity: [
+    {
+      label: "電力会社の料金プランを比較",
+      description: "引っ越しは切り替えの手間がゼロになる唯一のタイミング",
+      url: "", // ← A8 新電力・エネチェンジ等
+      emoji: "💡",
+    },
+  ],
+  gas: [
+    {
+      label: "ガス会社の料金プランを比較",
+      description: "都市ガス・プロパンともに、切り替えで下がることがあります",
+      url: "", // ← A8 ガス切り替え案件
+      emoji: "🔥",
+    },
+  ],
+};
