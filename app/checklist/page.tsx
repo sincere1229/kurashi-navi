@@ -72,7 +72,7 @@ export default function Checklist() {
   if (!state || state.userTasks.length === 0) {
     return (
       <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-5 text-center">
-        <Minori size={90} />
+        <Minori size={150} variant="main" />
         <p className="font-maru mt-4 text-lg font-bold">まだリストがないみたい🌱</p>
         <p className="mt-2 text-sm text-cocoa/70">60秒の診断で、あなた専用のやることリストを作ろう!</p>
         <Link href="/" className="font-maru mt-6 rounded-full bg-cocoa px-8 py-3 font-bold text-piyo">診断をはじめる</Link>

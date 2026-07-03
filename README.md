@@ -65,3 +65,18 @@
 `lib/site.ts` を開いて以下を設定:
 - contactFormUrl:Googleフォームを1つ作ってURLを貼る(推奨)
 - contactEmail:メールで受けるならアドレス記入(どちらか片方でOK)
+
+---
+
+## v1.3 追加分(みのり本イラスト反映)
+
+### キャラクター画像
+- `public/characters/minori-smile.png`(顔アップ・四つ葉クローバーのヘアピン)
+- `public/characters/minori-main.png`(全身・案内ポーズ)
+- `components/Minori.tsx` が表示サイズに応じて自動で使い分け(90px以下=顔アップ、それ以上=全身)。個別指定したい場合は `<Minori size={150} variant="main" />` のように明示可能
+- SVG仮デザインから本イラストに完全移行。以後、表情差分(困り顔・お祝いポーズ等)を追加する場合は `SRC` に追記するだけでOK
+
+### 差分追加のやり方(将来用)
+1. 新しい表情/ポーズの画像を `public/characters/` に追加
+2. `components/Minori.tsx` の `Variant` 型と `SRC` に1行追加
+3. 呼び出し側で `variant="新しい名前"` を指定

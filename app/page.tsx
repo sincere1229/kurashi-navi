@@ -101,7 +101,7 @@ export default function Home() {
         </header>
 
         <section className="mt-6 text-center">
-          <div className="mx-auto w-fit"><Minori size={110} /></div>
+          <div className="mx-auto w-fit"><Minori size={170} variant="main" /></div>
           <p className="relative bubble mt-3 mx-auto w-fit rounded-2xl bg-white px-4 py-3 text-sm shadow-sm">
             引っ越し、なにから始めればいいかわからない…<br />を、ぜんぶ解決するよ!
           </p>
