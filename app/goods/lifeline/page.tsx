@@ -10,30 +10,55 @@ type Provider = {
 // ▼ 提携先が決まり次第、name / point / href を差し替えてください
 const INTERNET: Provider[] = [
   {
-    name: "光回線A（提携予定）",
-    point: "工事の要否・対応エリア・キャッシュバックの有無を比較の目安に。",
-    href: "#AFFI:internet_A",
+    name: "SoftBank Air｜工事不要・使い放題（最短1ヵ月）",
+    point: "工事不要で、最短1ヵ月から利用できます。最大50,000円キャッシュバック（SoftBank Air取扱店経由）。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+BPJ05U+3NMM+HWPVL",
   },
   {
-    name: "光回線B（提携予定）",
-    point: "マンション・戸建てでプランが異なる場合があります。",
-    href: "#AFFI:internet_B",
+    name: "BIGLOBE光｜当社限定お申込みキャンペーン",
+    point: "最短開通確認後に即日振込み。最大50,000円キャッシュバック。工事ありの光回線をお探しの方に。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+BQ4FRM+3HKU+1BNYOX",
+  },
+  {
+    name: "auひかり｜期間限定スペシャルキャンペーン",
+    point: "新規お申し込みで最大186,800円おトク。開通までモバイルWi-Fiルーターのレンタルが無料です（当サイト限定）。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+BOXKK2+348K+3H2BC1",
+  },
+  {
+    name: "フレッツ光｜新生活応援キャンペーン",
+    point: "最大60,000円キャッシュバック＋月額利用料の大幅割引。引っ越し・学生・お友達紹介のいずれかでさらに5,000円キャッシュバック。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+9KQ34I+1MWA+O3MKH",
+  },
+  {
+    name: "PPPoE光回線｜マンション月額3,696円〜",
+    point: "初期費用・工事費が無料です。マンションで費用を抑えたい方に。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+9HQX3M+7JY+1BNYOX",
   },
 ];
 
 const ELECTRICITY: Provider[] = [
   {
-    name: "電力会社A（提携予定）",
-    point: "基本料金・従量単価・解約金の有無を比較しましょう。",
-    href: "#AFFI:electric_A",
+    name: "おうちでんき（でんき代6ヵ月間、毎月10%OFF）",
+    point: "新規・個人向けキャンペーンです。1年未満の解約は違約金5,000円、対象エリアのみ。燃料費調整額・再エネ賦課金は割引対象外です。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+31JV6A+5QV8+5YZ75",
+  },
+  {
+    name: "ドコモでんき（GMOとくとくBB限定・5,000円キャッシュバック）",
+    point: "スマホがドコモの方向け。dポイントが貯まる電気サービスです。キャッシュバックはGMOとくとくBB経由の申し込み限定です。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+2ZRKCY+50+83SRAP",
   },
 ];
 
 const GAS: Provider[] = [
   {
-    name: "ガス会社A（提携予定）",
-    point: "都市ガス・プロパンで選べる会社が異なります。",
-    href: "#AFFI:gas_A",
+    name: "enepi（エネピ）｜プロパンガス料金一括比較",
+    point: "複数社の料金を無料で比較できます。プロパンガスは会社によって料金差が大きいため、比較する価値があります。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+30CZYQ+2W92+NU729",
+  },
+  {
+    name: "enepi（エネピ）｜光熱費の料金診断",
+    point: "電気・ガスをまとめて、お得なプランを無料で診断できるサービスです。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+2W6YQA+2W92+1NJZN5",
   },
 ];
 
