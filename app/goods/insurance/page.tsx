@@ -5,6 +5,8 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 const FIRE_INSURANCE: Provider[] = [
@@ -12,12 +14,14 @@ const FIRE_INSURANCE: Provider[] = [
     name: "火災保険 無料診断サービス｜安いプランがわかる",
     point: "顧客満足度94%。今の火災保険が適正価格かどうか、無料で診断してもらえます。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+DKSZIQ+3RU+6S6Q1T",
+    img: "https://www26.a8.net/svt/bgt?aid=260705985821&wid=005&eno=01&mid=s00000000489041014000&mc=1",
+    recommend: "📉 何年も見直しておらず、割高かもしれないと感じている人向け",
   },
 ];
 
 export default function InsuranceGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -108,10 +112,23 @@ function ProviderSection({
         {emoji} {title}
       </h2>
       <p className="mt-1 text-xs text-cocoa/60">{note}</p>
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {providers.map((p) => (
           <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-            <p className="font-bold text-sm leading-snug">{p.name}</p>
+            {p.img && (
+              <img
+                src={p.img}
+                alt=""
+                loading="lazy"
+                className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+              />
+            )}
+            {p.recommend && (
+              <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+                {p.recommend}
+              </span>
+            )}
+            <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
             <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
             <a
               href={p.href}
