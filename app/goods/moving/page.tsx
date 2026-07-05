@@ -5,6 +5,8 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 const MOVERS: Provider[] = [
@@ -12,17 +14,21 @@ const MOVERS: Provider[] = [
     name: "引越し侍｜引っ越し料金一括見積もり",
     point: "複数の引っ越し業者にまとめて見積もり依頼ができ、料金が最大50%安くなることもあります。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+1PBR6A+ZXM+I7NE9",
+    img: "https://www21.a8.net/svt/bgt?aid=260703971103&wid=005&eno=01&mid=s00000004657003059000&mc=1",
+    recommend: "📊 複数社をまとめて比較して、一番安いところを見つけたい人向け",
   },
   {
     name: "トレファク引越｜引越し+買取でお得に",
     point: "引っ越しと同時に、不要な家具・家電の買取査定を依頼できます。処分と収入を同時に済ませたい方に。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B3VR7+CLOETU+1PO0+ZUXRL",
+    img: "https://www25.a8.net/svt/bgt?aid=260521603762&wid=005&eno=01&mid=s00000007992006023000&mc=1",
+    recommend: "🛋 引っ越しついでに不要な家具・家電を処分・現金化したい人向け",
   },
 ];
 
 export default function MovingGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -93,10 +99,23 @@ export default function MovingGoodsPage() {
 
 function ProviderSection({ providers }: { providers: Provider[] }) {
   return (
-    <section className="mt-6 space-y-3">
+    <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {providers.map((p) => (
         <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-          <p className="font-bold text-sm leading-snug">{p.name}</p>
+          {p.img && (
+            <img
+              src={p.img}
+              alt=""
+              loading="lazy"
+              className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+            />
+          )}
+          {p.recommend && (
+            <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+              {p.recommend}
+            </span>
+          )}
+          <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
           <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
           <a
             href={p.href}
