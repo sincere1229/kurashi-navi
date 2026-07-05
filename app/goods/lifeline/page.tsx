@@ -5,6 +5,7 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
 };
 
 // ▼ 提携先が決まり次第、name / point / href を差し替えてください
@@ -13,26 +14,31 @@ const INTERNET: Provider[] = [
     name: "SoftBank Air｜工事不要・使い放題（最短1ヵ月）",
     point: "工事不要で、最短1ヵ月から利用できます。最大50,000円キャッシュバック（SoftBank Air取扱店経由）。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+BPJ05U+3NMM+HWPVL",
+    img: "https://www23.a8.net/svt/bgt?aid=260607748708&wid=005&eno=01&mid=s00000017059003008000&mc=1",
   },
   {
     name: "BIGLOBE光｜当社限定お申込みキャンペーン",
     point: "最短開通確認後に即日振込み。最大50,000円キャッシュバック。工事ありの光回線をお探しの方に。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+BQ4FRM+3HKU+1BNYOX",
+    img: "https://www25.a8.net/svt/bgt?aid=260607748709&wid=005&eno=01&mid=s00000016275008006000&mc=1",
   },
   {
     name: "auひかり｜期間限定スペシャルキャンペーン",
     point: "新規お申し込みで最大186,800円おトク。開通までモバイルWi-Fiルーターのレンタルが無料です（当サイト限定）。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+BOXKK2+348K+3H2BC1",
+    img: "https://www21.a8.net/svt/bgt?aid=260607748707&wid=005&eno=01&mid=s00000014546021006000&mc=1",
   },
   {
     name: "フレッツ光｜新生活応援キャンペーン",
     point: "最大60,000円キャッシュバック＋月額利用料の大幅割引。引っ越し・学生・お友達紹介のいずれかでさらに5,000円キャッシュバック。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+9KQ34I+1MWA+O3MKH",
+    img: "https://www22.a8.net/svt/bgt?aid=260607748579&wid=005&eno=01&mid=s00000007633004049000&mc=1",
   },
   {
     name: "PPPoE光回線｜マンション月額3,696円〜",
     point: "初期費用・工事費が無料です。マンションで費用を抑えたい方に。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5Q84+9HQX3M+7JY+1BNYOX",
+    img: "https://www22.a8.net/svt/bgt?aid=260607748574&wid=005&eno=01&mid=s00000000979008006000&mc=1",
   },
 ];
 
@@ -41,11 +47,13 @@ const ELECTRICITY: Provider[] = [
     name: "おうちでんき（でんき代6ヵ月間、毎月10%OFF）",
     point: "新規・個人向けキャンペーンです。1年未満の解約は違約金5,000円、対象エリアのみ。燃料費調整額・再エネ賦課金は割引対象外です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+31JV6A+5QV8+5YZ75",
+    img: "https://www25.a8.net/svt/bgt?aid=260703971184&wid=005&eno=01&mid=s00000026810001003000&mc=1",
   },
   {
     name: "ドコモでんき（GMOとくとくBB限定・5,000円キャッシュバック）",
     point: "スマホがドコモの方向け。dポイントが貯まる電気サービスです。キャッシュバックはGMOとくとくBB経由の申し込み限定です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+2ZRKCY+50+83SRAP",
+    img: "https://www21.a8.net/svt/bgt?aid=260703971181&wid=005&eno=01&mid=s00000000018049011000&mc=1",
   },
 ];
 
@@ -54,17 +62,19 @@ const GAS: Provider[] = [
     name: "enepi（エネピ）｜プロパンガス料金一括比較",
     point: "複数社の料金を無料で比較できます。プロパンガスは会社によって料金差が大きいため、比較する価値があります。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+30CZYQ+2W92+NU729",
+    img: "https://www20.a8.net/svt/bgt?aid=260703971182&wid=005&eno=01&mid=s00000013511004004000&mc=1",
   },
   {
     name: "enepi（エネピ）｜光熱費の料金診断",
     point: "電気・ガスをまとめて、お得なプランを無料で診断できるサービスです。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7SGZ+2W6YQA+2W92+1NJZN5",
+    img: "https://www26.a8.net/svt/bgt?aid=260703971175&wid=005&eno=01&mid=s00000013511010003000&mc=1",
   },
 ];
 
 export default function LifelineGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -177,9 +187,17 @@ function ProviderSection({
         {emoji} {title}
       </h2>
       <p className="mt-1 text-xs text-cocoa/60">{note}</p>
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {providers.map((p) => (
           <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
+            {p.img && (
+              <img
+                src={p.img}
+                alt=""
+                loading="lazy"
+                className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+              />
+            )}
             <p className="font-bold text-sm leading-snug">{p.name}</p>
             <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
             <a
