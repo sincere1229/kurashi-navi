@@ -5,6 +5,8 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 const DEBT_CONSULT: Provider[] = [
@@ -12,12 +14,14 @@ const DEBT_CONSULT: Provider[] = [
     name: "イストワール法律事務所（弁護士法人）｜債務整理専門",
     point: "債務整理を専門に取り扱う法律事務所です。長時間の無料相談に対応しています。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+DLZUQA+4FR4+644DT",
+    img: "https://www20.a8.net/svt/bgt?aid=260705985823&wid=005&eno=01&mid=s00000020704001027000&mc=1",
+    recommend: "🗣 じっくり時間をかけて、無料で相談したい人向け",
   },
 ];
 
 export default function DebtGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -82,10 +86,23 @@ export default function DebtGoodsPage() {
 
 function ProviderSection({ providers }: { providers: Provider[] }) {
   return (
-    <section className="mt-6 space-y-3">
+    <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {providers.map((p) => (
         <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-          <p className="font-bold text-sm leading-snug">{p.name}</p>
+          {p.img && (
+            <img
+              src={p.img}
+              alt=""
+              loading="lazy"
+              className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+            />
+          )}
+          {p.recommend && (
+            <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+              {p.recommend}
+            </span>
+          )}
+          <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
           <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
           <a
             href={p.href}
