@@ -5,6 +5,8 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 const TAX: Provider[] = [
@@ -12,12 +14,14 @@ const TAX: Provider[] = [
     name: "税理士紹介サービス｜税理士選びのプロが何度でも優良税理士をご紹介",
     point: "Googleレビュー4.7（2023年9月現在）。相続税・確定申告・法人の税務など、相談内容に合う税理士を何度でも無料で紹介してもらえます。",
     href: "https://af.moshimo.com/af/c/click?a_id=5673567&p_id=5475&pc_id=14990&pl_id=71541",
+    img: "https://image.moshimo.com/af-img/3108/000000071541.png",
+    recommend: "🔄 自分に合う税理士に、何度でも探し直したい人向け",
   },
 ];
 
 export default function TaxGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -88,10 +92,23 @@ export default function TaxGoodsPage() {
 
 function ProviderSection({ providers }: { providers: Provider[] }) {
   return (
-    <section className="mt-6 space-y-3">
+    <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {providers.map((p) => (
         <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-          <p className="font-bold text-sm leading-snug">{p.name}</p>
+          {p.img && (
+            <img
+              src={p.img}
+              alt=""
+              loading="lazy"
+              className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+            />
+          )}
+          {p.recommend && (
+            <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+              {p.recommend}
+            </span>
+          )}
+          <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
           <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
           <a
             href={p.href}
