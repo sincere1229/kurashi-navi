@@ -5,6 +5,8 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 // ▼ 提携先・実際のリンクが決まり次第、name / point / href を差し替えてください
@@ -13,17 +15,21 @@ const CONSULT: Provider[] = [
     name: "相続の面倒ごと、全部お任せください｜相続のプロによる無料相談",
     point: "相続調査・遺産分割協議書の作成・各種手続き・不動産分析まで対応。相談料0円です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B3VR7+C8KVIQ+56AO+BY641",
+    img: "https://www24.a8.net/svt/bgt?aid=260521603740&wid=005&eno=01&mid=s00000024144002007000&mc=1",
+    recommend: "🧾 何から手をつければいいか分からない・丸ごと任せたい人向け",
   },
   {
     name: "相続アシスト｜ゼロタッチ相続税申告",
     point: "相続の手間も不安も、まるごと相談できるサービスです。相続税申告に不安がある方に。",
     href: "https://af.moshimo.com/af/c/click?a_id=5647169&p_id=7301&pc_id=20977&pl_id=93281",
+    img: "https://image.moshimo.com/af-img/3982/000000093281.png",
+    recommend: "💴 相続税の申告が必要かどうか、まず不安を解消したい人向け",
   },
 ];
 
 export default function InheritanceGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -118,10 +124,23 @@ function ProviderSection({
         {emoji} {title}
       </h2>
       <p className="mt-1 text-xs text-cocoa/60">{note}</p>
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {providers.map((p) => (
           <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-            <p className="font-bold text-sm leading-snug">{p.name}</p>
+            {p.img && (
+              <img
+                src={p.img}
+                alt=""
+                loading="lazy"
+                className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+              />
+            )}
+            {p.recommend && (
+              <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+                {p.recommend}
+              </span>
+            )}
+            <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
             <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
             <a
               href={p.href}
