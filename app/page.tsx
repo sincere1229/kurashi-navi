@@ -11,13 +11,14 @@ type Category = {
 
 const CATEGORIES: Category[] = [
   { emoji: "🚚", title: "引っ越し", desc: "やることリストを60秒で診断", href: "/moving", status: "live" },
+  { emoji: "🚛", title: "引っ越し業者比較", desc: "一括見積もりで料金を比較", href: "/goods/moving", status: "live" },
+  { emoji: "🏢", title: "不動産", desc: "新居探し・売却・空き家査定", href: "/goods/realestate", status: "live" },
+  { emoji: "🏛", title: "相続の相談窓口", desc: "弁護士・司法書士・税理士を比較", href: "/goods/inheritance", status: "live" },
   { emoji: "⚡", title: "電気・ガス・ネット", desc: "引っ越し先の回線・ライフライン比較", href: "/goods/lifeline", status: "live" },
-  { emoji: "🛍", title: "おすすめグッズ", desc: "仏具・供養など暮らしの比較", href: "/goods", status: "live" },
-  { emoji: "🏛", title: "相続・遺言", desc: "手続きと期限をチェック", href: "/column?cat=inheritance", status: "soon" },
-  { emoji: "👴", title: "介護", desc: "施設・制度の選び方", href: "/column?cat=care", status: "soon" },
-  { emoji: "🏠", title: "実家・空き家", desc: "売る?残す?の判断材料", href: "/column?cat=home", status: "soon" },
+  { emoji: "🛍", title: "おすすめグッズ", desc: "葬儀・仏具・供養など暮らしの比較", href: "/goods", status: "live" },
+  { emoji: "👴", title: "介護", desc: "老人ホーム・施設探しの無料相談", href: "/goods/care", status: "live" },
   { emoji: "💔", title: "離婚・財産分与", desc: "お金と手続きの整理", href: "/column?cat=divorce", status: "soon" },
-  { emoji: "🛡", title: "保険の見直し", desc: "本当に必要な保障とは", href: "/column?cat=insurance", status: "soon" },
+  { emoji: "🛡", title: "保険の見直し", desc: "火災保険の無料診断", href: "/goods/insurance", status: "live" },
   { emoji: "💰", title: "年金・給付金", desc: "もらい忘れを防ぐ", href: "/column?cat=pension", status: "soon" },
   { emoji: "📋", title: "退職・転職", desc: "失業保険・残業代の整理", href: "/column?cat=job", status: "soon" },
 ];
