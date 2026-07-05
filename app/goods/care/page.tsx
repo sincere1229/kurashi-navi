@@ -5,6 +5,8 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 const CARE_FACILITY: Provider[] = [
@@ -12,6 +14,8 @@ const CARE_FACILITY: Provider[] = [
     name: "いい介護｜老人ホーム・介護施設探し（無料相談）",
     point: "お客様満足度91%。希望条件に合う施設を、専門の相談員が無料で一緒に探してくれます。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5LK2+5VYF82+5VOK+5YZ75",
+    img: "https://www24.a8.net/svt/bgt?aid=260601698356&wid=005&eno=01&mid=s00000027434001003000&mc=1",
+    recommend: "🔍 条件に合う施設を、一人で探すのが大変な人向け",
   },
 ];
 
@@ -20,12 +24,14 @@ const HOME_CARE: Provider[] = [
     name: "イチロウ｜自費の訪問介護・通院付き添いサービス",
     point: "介護保険の対象外となる時間帯や内容にも対応できる、自費の訪問介護サービスです。通院の付き添いにも利用できます。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5LK2+5URK0I+54PG+5ZMCH",
+    img: "https://www26.a8.net/svt/bgt?aid=260601698354&wid=005&eno=01&mid=s00000023938001006000&mc=1",
+    recommend: "🚶 介護保険の範囲外の時間帯・内容でサポートが欲しい人向け",
   },
 ];
 
 export default function CareGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -112,10 +118,23 @@ function ProviderSection({
         {emoji} {title}
       </h2>
       <p className="mt-1 text-xs text-cocoa/60">{note}</p>
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {providers.map((p) => (
           <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-            <p className="font-bold text-sm leading-snug">{p.name}</p>
+            {p.img && (
+              <img
+                src={p.img}
+                alt=""
+                loading="lazy"
+                className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+              />
+            )}
+            {p.recommend && (
+              <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+                {p.recommend}
+              </span>
+            )}
+            <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
             <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
             <a
               href={p.href}
