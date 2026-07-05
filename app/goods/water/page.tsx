@@ -5,6 +5,8 @@ type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 const WATER: Provider[] = [
@@ -12,11 +14,15 @@ const WATER: Provider[] = [
     name: "水道修理屋｜水道のトラブル即解決（満足度93%）",
     point: "水漏れなどの水道トラブルに対応。お客様満足度93%の実績があります。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+GFSZ6A+36X8+2HCB1D",
+    img: "https://www29.a8.net/svt/bgt?aid=260705985994&wid=005&eno=01&mid=s00000014894015006000&mc=1",
+    recommend: "🚿 水漏れ・詰まりを今すぐ何とかしたい人向け",
   },
   {
     name: "水道救急センター（株式会社ライフサポート）｜最短30分で駆けつけ",
     point: "トイレのつまり・水漏れに対応。無料お見積りが可能です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+GGEES2+3A3O+5ZMCH",
+    img: "https://www21.a8.net/svt/bgt?aid=260705985995&wid=005&eno=01&mid=s00000015306001006000&mc=1",
+    recommend: "⏱ とにかく駆けつけの早さを重視する人向け",
   },
 ];
 
@@ -25,16 +31,22 @@ const LOCK: Provider[] = [
     name: "カギ110番｜鍵トラブルをスピード解決",
     point: "24時間365日受付対応。加盟店数が多く、鍵の紛失・故障・交換など幅広いトラブルに対応しています。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+G6A1HU+39GM+355UY9",
+    img: "https://www24.a8.net/svt/bgt?aid=260705985978&wid=005&eno=01&mid=s00000015223019007000&mc=1",
+    recommend: "🌙 深夜・早朝でもすぐ対応してほしい人向け",
   },
   {
     name: "鍵のプロが解決します｜防犯設備士在籍",
     point: "料金表に基づいたお見積りを提示。警察署からの依頼実績もある業者です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+G6VH3M+39BC+HXKQP",
+    img: "https://www29.a8.net/svt/bgt?aid=260705985979&wid=005&eno=01&mid=s00000015204003012000&mc=1",
+    recommend: "🛡 信頼できる業者かどうかをきちんと見極めたい人向け",
   },
   {
     name: "鍵修理屋｜紛失・破損・開錠・作成に対応",
     point: "ご相談・出張料・お見積りはすべて0円です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+G82CB6+36X8+2Z8T75",
+    img: "https://www29.a8.net/svt/bgt?aid=260705985981&wid=005&eno=01&mid=s00000014894018013000&mc=1",
+    recommend: "💴 見積りを見てから、追加費用なしで頼みたい人向け",
   },
 ];
 
@@ -43,6 +55,8 @@ const KEY_COPY: Provider[] = [
     name: "俺の合鍵｜合鍵作成・郵送サービス（送料無料）",
     point: "急いでいなければ、店舗に行かずに合鍵を郵送で作成できます。全国対応・送料無料。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+G8NRWY+39BC+64RJ5",
+    img: "https://www27.a8.net/svt/bgt?aid=260705985982&wid=005&eno=01&mid=s00000015204001030000&mc=1",
+    recommend: "📮 店舗に行く手間を省いて、予備の合鍵を作りたい人向け",
   },
 ];
 
@@ -51,17 +65,21 @@ const PEST: Provider[] = [
     name: "ねずみ110番｜ねずみ駆除・予防のご相談",
     point: "24時間365日受付対応。ねずみの駆除だけでなく、予防のご相談にも対応しています。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+FRZMZ6+39GM+1HMIGH",
+    img: "https://www24.a8.net/svt/bgt?aid=260705985954&wid=005&eno=01&mid=s00000015223009007000&mc=1",
+    recommend: "🐭 天井や壁の中で物音がして、確認したい人向け",
   },
   {
     name: "鳩110番｜鳩被害の駆除・対策",
     point: "ベランダ・屋根の鳩被害に対応。キャンセル料0円です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B7U0X+FSL2KY+39GM+2BE6PD",
+    img: "https://www26.a8.net/svt/bgt?aid=260705985955&wid=005&eno=01&mid=s00000015223014007000&mc=1",
+    recommend: "🕊 ベランダの糞害・鳴き声に悩んでいる人向け",
   },
 ];
 
 export default function WaterGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -165,10 +183,23 @@ function ProviderSection({
         {emoji} {title}
       </h2>
       <p className="mt-1 text-xs text-cocoa/60">{note}</p>
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {providers.map((p) => (
           <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-            <p className="font-bold text-sm leading-snug">{p.name}</p>
+            {p.img && (
+              <img
+                src={p.img}
+                alt=""
+                loading="lazy"
+                className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+              />
+            )}
+            {p.recommend && (
+              <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+                {p.recommend}
+              </span>
+            )}
+            <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
             <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
             <a
               href={p.href}
