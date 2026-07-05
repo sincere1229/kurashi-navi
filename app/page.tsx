@@ -25,7 +25,7 @@ const CATEGORIES: Category[] = [
 
 export default function TopPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <span className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -52,7 +52,7 @@ export default function TopPage() {
       {/* 困りごとから探す */}
       <section className="mt-10">
         <h2 className="font-maru text-lg font-bold">🔎 困りごとから探す</h2>
-        <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {CATEGORIES.map((c) => (
             <CategoryCard key={c.title} category={c} />
           ))}
@@ -117,18 +117,31 @@ function CategoryCard({ category }: { category: Category }) {
     <Link
       href={category.href}
       aria-disabled={!isLive}
-      className={`relative flex flex-col gap-1 rounded-2xl p-4 shadow-sm transition active:scale-95 ${
-        isLive ? "bg-piyo" : "bg-white"
+      className={`relative flex flex-col gap-1 overflow-hidden rounded-2xl p-4 shadow-sm transition active:scale-95 md:flex-row md:items-center md:gap-4 md:p-0 ${
+        isLive ? "bg-piyo md:bg-white" : "bg-white"
       }`}
     >
       {!isLive && (
-        <span className="font-maru absolute right-2 top-2 rounded-full bg-cocoa/10 px-2 py-0.5 text-[10px] font-bold text-cocoa/60">
+        <span className="font-maru absolute right-2 top-2 z-10 rounded-full bg-cocoa/10 px-2 py-0.5 text-[10px] font-bold text-cocoa/60">
           準備中
         </span>
       )}
-      <span className="text-2xl">{category.emoji}</span>
-      <p className="font-maru font-bold leading-snug">{category.title}</p>
-      <p className="text-xs text-cocoa/70">{category.desc}</p>
+
+      {/* アイコンブロック：PCでは横長カード左側の大きな色つきブロックに */}
+      <div
+        className={`flex shrink-0 items-center justify-center text-2xl md:h-full md:w-24 md:text-4xl md:py-6 ${
+          isLive ? "md:bg-piyo" : "md:bg-cocoa/5"
+        }`}
+      >
+        {category.emoji}
+      </div>
+
+      <div className="md:flex-1 md:py-4 md:pr-4">
+        <p className="font-maru font-bold leading-snug">{category.title}</p>
+        <p className="text-xs text-cocoa/70">{category.desc}</p>
+      </div>
+
+      <span className="hidden text-cocoa/30 md:block md:pr-4">›</span>
     </Link>
   );
 }
