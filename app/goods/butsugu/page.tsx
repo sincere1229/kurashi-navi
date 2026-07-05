@@ -8,6 +8,12 @@ type Product = {
   amazon: string;
 };
 
+type Provider = {
+  name: string;
+  point: string;
+  href: string;
+};
+
 const BUTSUDAN: Product[] = [
   {
     name: "小型仏壇 15号（桐無垢・上置き・モダン）／15,900円（税込・送料無料）",
@@ -35,12 +41,62 @@ const KOTSUBO: Product[] = [
   },
 ];
 
+const OCEAN_MEMORIAL: Provider[] = [
+  {
+    name: "みんなの海洋散骨",
+    point: "手元で供養するか、自然に還すか。海洋散骨という選択肢もあります。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5LK3+1GE93M+4P1A+5ZU29",
+  },
+];
+
+const GRAVESTONE: Provider[] = [
+  {
+    name: "墓石ナビ｜お墓の一括見積もり比較",
+    point: "利用者満足度98%。全国の優良石材店から無料で一括見積もりができます。安くなった平均額は37万円という実績もあります。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5LK3+1I6JWY+46CI+BYLJL",
+  },
+];
+
 const BUTSUGU_SET: Product[] = [
   {
     name: "仏具セット いちりん草 5点セット（白みかげ色・備前吹）上置12号〜18号用／15,800円（税込・送料無料）",
     point: "花立・香炉・火立・仏飯器・茶湯器は素材と色をセットで揃えると統一感が出ます。",
     rakuten: "https://hb.afl.rakuten.co.jp/ichiba/558051db.aa487966.558051dc.1ae5aba5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbutudan%2F23mbg-itr5-wh%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
     amazon: "#AFFI:amazon_仏具セット",
+  },
+];
+
+const MOURNING_WEAR: Provider[] = [
+  {
+    name: "LULUTI（ルルティ）｜フォーマルドレス・喪服レンタル",
+    point: "「買う」より「借りる」。急な弔事でも、サイズや小物までまとめてレンタルできます。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B63GF+AI2BGI+4FOM+C0IZL",
+  },
+  {
+    name: "Cariru BLACK FORMAL｜喪服・礼服レンタル",
+    point: "最短当日発送に対応。バッグ・靴・数珠など小物までセットでレンタルできます。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B63GF+AFOL1E+1PO0+25FMXT",
+  },
+];
+
+const FUNERAL: Provider[] = [
+  {
+    name: "家族葬のこれから｜火葬プラン最安97,900円（税込）〜",
+    point: "1日葬・家族葬・火葬プランを比較できます。※直葬プランの資料請求割引価格です。",
+    href: "https://px.a8.net/svt/ejp?a8mat=4B5LK3+1FSTHU+5PHI+5ZMCH",
+  },
+];
+
+const MUTUAL_AID: Provider[] = [
+  {
+    name: "ごじょクル｜冠婚葬祭に関する相談・資料請求",
+    point: "24時間365日受付。もしもの時に慌てないための、冠婚葬祭の事前相談・資料請求ができます。",
+    href: "https://af.moshimo.com/af/c/click?a_id=5673575&p_id=2660&pc_id=5963&pl_id=34110",
+  },
+  {
+    name: "ごじょスケ｜全国の互助会葬儀を一括資料請求",
+    point: "全国の互助会葬儀を24時間365日、一括で探して資料請求できます。",
+    href: "https://af.moshimo.com/af/c/click?a_id=5673571&p_id=2851&pc_id=6517&pl_id=36426",
   },
 ];
 
@@ -62,12 +118,12 @@ export default function ButsuguGoodsPage() {
           <Minori size={130} />
         </div>
         <p className="relative bubble mt-3 mx-auto w-fit rounded-2xl bg-white px-4 py-3 text-sm shadow-sm">
-          仏壇・位牌・骨壷選び、
+          葬儀社選びも、仏壇・位牌・骨壷選びも、
           <br />
           はじめてだと迷いますよね。
         </p>
         <h1 className="font-maru mt-6 text-2xl font-black leading-relaxed">
-          仏具・供養グッズの
+          葬儀・仏具・供養の
           <br />
           <span className="bg-piyo px-2 rounded-lg">選び方と比較</span>
         </h1>
@@ -91,6 +147,22 @@ export default function ButsuguGoodsPage() {
           ※ 上記は一般的な選び方の目安です。宗派や地域の慣習によって適切なものが異なる場合があるため、心配な場合は菩提寺や葬儀社にご確認ください。
         </p>
       </section>
+
+      {/* 葬儀社 */}
+      <ProviderSection
+        emoji="⛪"
+        title="葬儀社・葬儀プランを比較"
+        note="家族葬・1日葬・火葬プランなど、内容と費用を事前に比較しておくと安心です。"
+        providers={FUNERAL}
+      />
+
+      {/* 冠婚葬祭の事前相談 */}
+      <ProviderSection
+        emoji="📮"
+        title="冠婚葬祭の事前相談・資料請求"
+        note="まだ具体的なプランを決めていない方も、資料請求だけで備えを始められます。"
+        providers={MUTUAL_AID}
+      />
 
       {/* 仏壇 */}
       <ProductSection
@@ -116,12 +188,36 @@ export default function ButsuguGoodsPage() {
         products={KOTSUBO}
       />
 
+      {/* 海洋散骨（供養方法の選択肢） */}
+      <ProviderSection
+        emoji="🌊"
+        title="海洋散骨という選択肢"
+        note="お墓や仏壇を持たない供養の形として選ばれることが増えています。"
+        providers={OCEAN_MEMORIAL}
+      />
+
+      {/* お墓を建てる場合の見積もり比較 */}
+      <ProviderSection
+        emoji="🪦"
+        title="お墓を建てる場合の見積もり比較"
+        note="石材店によって価格差が大きいため、複数社を比較すると安心です。"
+        providers={GRAVESTONE}
+      />
+
       {/* 仏具セット */}
       <ProductSection
         emoji="🔔"
         title="仏具セット・おりん"
         note="バラで揃えるより、セットの方が色や素材の統一感を出しやすいです。"
         products={BUTSUGU_SET}
+      />
+
+      {/* 喪服・フォーマルウェア */}
+      <ProviderSection
+        emoji="👗"
+        title="喪服・フォーマルウェアのレンタル"
+        note="急な弔事で「サイズが合う喪服がない」「毎回買うのは負担」という場合に。"
+        providers={MOURNING_WEAR}
       />
 
       <section className="mt-10 rounded-2xl bg-piyo/25 p-4">
@@ -188,6 +284,43 @@ function ProductSection({
                 Amazonで見る
               </a>
             </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProviderSection({
+  emoji,
+  title,
+  note,
+  providers,
+}: {
+  emoji: string;
+  title: string;
+  note: string;
+  providers: Provider[];
+}) {
+  return (
+    <section className="mt-8">
+      <h2 className="font-maru text-lg font-bold">
+        {emoji} {title}
+      </h2>
+      <p className="mt-1 text-xs text-cocoa/60">{note}</p>
+      <div className="mt-3 space-y-3">
+        {providers.map((p) => (
+          <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
+            <p className="font-bold text-sm leading-snug">{p.name}</p>
+            <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
+            <a
+              href={p.href}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="font-maru mt-3 block rounded-full bg-cocoa py-2 text-center text-xs font-bold text-piyo"
+            >
+              詳細を見る
+            </a>
           </div>
         ))}
       </div>
