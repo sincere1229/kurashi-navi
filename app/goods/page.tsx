@@ -10,12 +10,17 @@ type GoodsCategory = {
 };
 
 const GOODS_CATEGORIES: GoodsCategory[] = [
-  { emoji: "🕯", title: "仏具・供養", desc: "仏壇・位牌・骨壷の選び方と比較", href: "/goods/butsugu", status: "live" },
+  { emoji: "🕯", title: "葬儀・仏具・供養", desc: "葬儀社の比較から仏壇・位牌・骨壷まで", href: "/goods/butsugu", status: "live" },
   { emoji: "⚡", title: "電気・ガス・ネット", desc: "引っ越し先の回線・ライフライン比較", href: "/goods/lifeline", status: "live" },
-  { emoji: "📦", title: "引っ越し用品", desc: "梱包・整理に役立つグッズ", href: "/goods/moving", status: "soon" },
-  { emoji: "👴", title: "介護のお助けグッズ", desc: "在宅介護をラクにする道具", href: "/goods/care", status: "soon" },
-  { emoji: "🛡", title: "保険・お金の相談", desc: "無料相談窓口の比較", href: "/goods/insurance", status: "soon" },
-  { emoji: "🏠", title: "実家じまい・整理", desc: "遺品整理・不用品回収の比較", href: "/goods/jikka", status: "soon" },
+  { emoji: "🏢", title: "不動産", desc: "新居探し・売却・空き家査定", href: "/goods/realestate", status: "live" },
+  { emoji: "🏛", title: "相続の相談窓口", desc: "弁護士・司法書士・税理士を比較", href: "/goods/inheritance", status: "live" },
+  { emoji: "🧮", title: "税理士紹介", desc: "相続税・確定申告・法人税務の相談", href: "/goods/tax", status: "live" },
+  { emoji: "⚖️", title: "借金・債務整理", desc: "任意整理・自己破産などの無料相談", href: "/goods/debt", status: "live" },
+  { emoji: "🚛", title: "引っ越し業者の一括見積もり", desc: "料金を比較して最大50%安くなることも", href: "/goods/moving", status: "live" },
+  { emoji: "🅿️", title: "月極駐車場", desc: "新居まわりの駐車場を検索", href: "/goods/parking", status: "live" },
+  { emoji: "🚰", title: "緊急トラブル", desc: "水道・鍵・害虫害獣などの相談窓口", href: "/goods/water", status: "live" },
+  { emoji: "👴", title: "介護のお助けグッズ", desc: "老人ホーム探し・在宅介護サービスの相談", href: "/goods/care", status: "live" },
+  { emoji: "🛡", title: "保険の見直し", desc: "火災保険の無料診断", href: "/goods/insurance", status: "live" },
   { emoji: "🎒", title: "防災・備え", desc: "備蓄・非常用グッズの選び方", href: "/goods/bousai", status: "soon" },
 ];
 
