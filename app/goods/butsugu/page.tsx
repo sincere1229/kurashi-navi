@@ -6,12 +6,16 @@ type Product = {
   point: string;
   rakuten: string;
   amazon: string;
+  img?: string;
+  recommend?: string;
 };
 
 type Provider = {
   name: string;
   point: string;
   href: string;
+  img?: string;
+  recommend?: string;
 };
 
 const BUTSUDAN: Product[] = [
@@ -20,6 +24,8 @@ const BUTSUDAN: Product[] = [
     point: "濃茶色×半艶×扉付きは、リビングに置いても浮きにくい定番の組み合わせです。",
     rakuten: "https://hb.afl.rakuten.co.jp/ichiba/55804871.ba49ec04.55804872.549a6e1f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkoyori%2Flf200313-21%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
     amazon: "#AFFI:amazon_ミニ仏壇",
+    img: "https://hbb.afl.rakuten.co.jp/hgb/55804871.ba49ec04.55804872.549a6e1f/?me_id=1404324&item_id=10000017&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fkoyori%2Fcabinet%2Fitem%2Fbutsudan%2Fsj-lf200313-21.jpg%3F_ex%3D240x240&s=240x240&t=picttext",
+    recommend: "🏠 リビング置き・マンションで浮かない仏壇を探している人向け",
   },
 ];
 
@@ -29,6 +35,8 @@ const IHAI: Product[] = [
     point: "文字は「彫り」の方が長く使っても劣化が目立ちにくいのが特徴です。",
     rakuten: "https://hb.afl.rakuten.co.jp/ichiba/558049a9.dbf40a6b.558049aa.70e1541d/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbutsudan-kan%2Fin-400%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
     amazon: "#AFFI:amazon_位牌",
+    img: "https://hbb.afl.rakuten.co.jp/hgb/558049a9.dbf40a6b.558049aa.70e1541d/?me_id=1319582&item_id=10004010&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fbutsudan-kan%2Fcabinet%2Fsum%2Fihai%2F5-0%2Fin-400.jpg%3F_ex%3D240x240&s=240x240&t=picttext",
+    recommend: "✍️ 名入れ・戒名彫りをきちんとした形で残したい人向け",
   },
 ];
 
@@ -38,6 +46,8 @@ const KOTSUBO: Product[] = [
     point: "産地表記のある陶磁器は、単色でも落ち着いた印象になりやすいです。",
     rakuten: "https://hb.afl.rakuten.co.jp/ichiba/55804cb8.d5aab1d6.55804cb9.3a2273c8/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fe-butsudanya%2Fkotsubo067-01%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
     amazon: "#AFFI:amazon_骨壷",
+    img: "https://hbb.afl.rakuten.co.jp/hgb/55804cb8.d5aab1d6.55804cb9.3a2273c8/?me_id=1239348&item_id=10016666&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fe-butsudanya%2Fcabinet%2Fkotsutsubo%2Fkotsubo067-01.jpg%3F_ex%3D240x240&s=240x240&t=picttext",
+    recommend: "🎨 上品な色味・産地にこだわって選びたい人向け",
   },
 ];
 
@@ -46,6 +56,8 @@ const OCEAN_MEMORIAL: Provider[] = [
     name: "みんなの海洋散骨",
     point: "手元で供養するか、自然に還すか。海洋散骨という選択肢もあります。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5LK3+1GE93M+4P1A+5ZU29",
+    img: "https://www26.a8.net/svt/bgt?aid=260601699088&wid=005&eno=01&mid=s00000021907001007000&mc=1",
+    recommend: "🌊 お墓や仏壇を持たない供養を考えている人向け",
   },
 ];
 
@@ -54,6 +66,8 @@ const GRAVESTONE: Provider[] = [
     name: "墓石ナビ｜お墓の一括見積もり比較",
     point: "利用者満足度98%。全国の優良石材店から無料で一括見積もりができます。安くなった平均額は37万円という実績もあります。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5LK3+1I6JWY+46CI+BYLJL",
+    img: "https://www23.a8.net/svt/bgt?aid=260601699091&wid=005&eno=01&mid=s00000019485002009000&mc=1",
+    recommend: "🪦 これからお墓を建てる予定・複数社を比較したい人向け",
   },
 ];
 
@@ -63,6 +77,8 @@ const BUTSUGU_SET: Product[] = [
     point: "花立・香炉・火立・仏飯器・茶湯器は素材と色をセットで揃えると統一感が出ます。",
     rakuten: "https://hb.afl.rakuten.co.jp/ichiba/558051db.aa487966.558051dc.1ae5aba5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbutudan%2F23mbg-itr5-wh%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
     amazon: "#AFFI:amazon_仏具セット",
+    img: "https://hbb.afl.rakuten.co.jp/hgb/558051db.aa487966.558051dc.1ae5aba5/?me_id=1200488&item_id=10001230&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fbutudan%2Fcabinet%2Fbgm%2F23mbg-itr5-wh.jpg%3F_ex%3D240x240&s=240x240&t=picttext",
+    recommend: "🔔 仏具を色・素材でまとめて統一感を出したい人向け",
   },
 ];
 
@@ -71,11 +87,15 @@ const MOURNING_WEAR: Provider[] = [
     name: "LULUTI（ルルティ）｜フォーマルドレス・喪服レンタル",
     point: "「買う」より「借りる」。急な弔事でも、サイズや小物までまとめてレンタルできます。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B63GF+AI2BGI+4FOM+C0IZL",
+    img: "https://www24.a8.net/svt/bgt?aid=260624895635&wid=003&eno=01&mid=s00000020695002018000&mc=1",
+    recommend: "👗 頻繁には使わないので、買わずに済ませたい人向け",
   },
   {
     name: "Cariru BLACK FORMAL｜喪服・礼服レンタル",
     point: "最短当日発送に対応。バッグ・靴・数珠など小物までセットでレンタルできます。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B63GF+AFOL1E+1PO0+25FMXT",
+    img: "https://www22.a8.net/svt/bgt?aid=260624895631&wid=003&eno=01&mid=s00000007992013006000&mc=1",
+    recommend: "⏱ 急な訃報で今日・明日中に届けてほしい人向け",
   },
 ];
 
@@ -84,6 +104,8 @@ const FUNERAL: Provider[] = [
     name: "家族葬のこれから｜火葬プラン最安97,900円（税込）〜",
     point: "1日葬・家族葬・火葬プランを比較できます。※直葬プランの資料請求割引価格です。",
     href: "https://px.a8.net/svt/ejp?a8mat=4B5LK3+1FSTHU+5PHI+5ZMCH",
+    img: "https://www23.a8.net/svt/bgt?aid=260601699087&wid=005&eno=01&mid=s00000026631001006000&mc=1",
+    recommend: "💴 まずは葬儀費用の総額感を掴みたい人向け",
   },
 ];
 
@@ -92,17 +114,21 @@ const MUTUAL_AID: Provider[] = [
     name: "ごじょクル｜冠婚葬祭に関する相談・資料請求",
     point: "24時間365日受付。もしもの時に慌てないための、冠婚葬祭の事前相談・資料請求ができます。",
     href: "https://af.moshimo.com/af/c/click?a_id=5673575&p_id=2660&pc_id=5963&pl_id=34110",
+    img: "https://image.moshimo.com/af-img/2091/000000034110.jpg",
+    recommend: "📮 まだ何も決めていない・とりあえず資料だけ見たい人向け",
   },
   {
     name: "ごじょスケ｜全国の互助会葬儀を一括資料請求",
     point: "全国の互助会葬儀を24時間365日、一括で探して資料請求できます。",
     href: "https://af.moshimo.com/af/c/click?a_id=5673571&p_id=2851&pc_id=6517&pl_id=36426",
+    img: "https://image.moshimo.com/af-img/2091/000000036426.jpg",
+    recommend: "🏢 互助会に入っているか分からない・複数社を比べたい人向け",
   },
 ];
 
 export default function ButsuguGoodsPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md md:max-w-2xl lg:max-w-4xl px-5 pb-16">
       <header className="flex items-center justify-between py-4">
         <Link href="/" className="font-maru text-xl font-black">
           暮らしナビ<span className="text-piyodeep">🏠</span>
@@ -261,10 +287,23 @@ function ProductSection({
         {emoji} {title}
       </h2>
       <p className="mt-1 text-xs text-cocoa/60">{note}</p>
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p) => (
           <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-            <p className="font-bold text-sm leading-snug">{p.name}</p>
+            {p.img && (
+              <img
+                src={p.img}
+                alt=""
+                loading="lazy"
+                className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+              />
+            )}
+            {p.recommend && (
+              <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+                {p.recommend}
+              </span>
+            )}
+            <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
             <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
             <div className="mt-3 flex gap-2">
               <a
@@ -308,10 +347,23 @@ function ProviderSection({
         {emoji} {title}
       </h2>
       <p className="mt-1 text-xs text-cocoa/60">{note}</p>
-      <div className="mt-3 space-y-3">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {providers.map((p) => (
           <div key={p.name} className="rounded-2xl bg-white p-4 shadow-sm">
-            <p className="font-bold text-sm leading-snug">{p.name}</p>
+            {p.img && (
+              <img
+                src={p.img}
+                alt=""
+                loading="lazy"
+                className="mb-3 w-full rounded-xl border border-cocoa/10 object-cover"
+              />
+            )}
+            {p.recommend && (
+              <span className="font-maru inline-block rounded-full bg-piyo px-3 py-1 text-[11px] font-bold text-cocoa">
+                {p.recommend}
+              </span>
+            )}
+            <p className="mt-2 font-bold text-sm leading-snug">{p.name}</p>
             <p className="mt-1 text-xs text-cocoa/70">{p.point}</p>
             <a
               href={p.href}
