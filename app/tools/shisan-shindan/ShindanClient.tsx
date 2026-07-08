@@ -9,7 +9,7 @@ import { useState } from "react";
 
 /* ---------- ナビゲーター：みのり ---------- */
 // ★暮らしナビの実際の画像パスに合わせて調整してください
-const MINORI_ICON = "/images/characters/minori-smile.png";
+const MINORI_ICON = "@/components/Minori";
 
 /* ---------- リンク管理（差し替えはここだけ） ---------- */
 const LINKS = {
