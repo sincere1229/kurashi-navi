@@ -9,6 +9,10 @@ import Minori from "@/components/Minori";
    ============================================================ */
 
 /* ---------- リンク管理（差し替えはここだけ） ---------- */
+// ★A8の提携承認が下りてURLを差し替えたら true にする
+//   false の間は結果ページのPRボタンが非表示になり、公式リンクのみ表示されます
+const A8_READY = false;
+
 const LINKS = {
   // ★ A8リンクに差し替えてください
   fpSoudan: {
@@ -38,11 +42,14 @@ const LINKS = {
     label: "日本証券業協会：投資の時間",
     url: "https://www.jsda.or.jp/jikan/",
   },
-  // 内部リンク（★暮らしナビの実パスに合わせて調整）
-  bouei: { label: "おひとりさま防衛編を読む", url: "/column" },
-  mushoku: { label: "無職防衛編を読む", url: "/column" },
-  kaigo: { label: "介護・実家のお金の記事を読む", url: "/goods/care" },
-  souzoku: { label: "相続の準備を知る", url: "/lp/souzoku" },
+  // 内部リンク
+  // ★防衛編コラムを暮らしナビに掲載したら、labelとurlを差し替える
+  //   bouei → 「おひとりさま防衛編を読む」/column?cat=ohitorisama
+  //   mushoku → 「無職防衛編を読む」/column?cat=mushoku
+  bouei: { label: "お金と暮らしのコラムを読む", url: "/column" },
+  mushoku: { label: "お金と暮らしのコラムを読む", url: "/column" },
+  kaigo: { label: "介護・実家の相談窓口を見る", url: "/goods/care" },
+  souzoku: { label: "相続の相談窓口を見る", url: "/goods/inheritance" },
 };
 
 /* ---------- 設問データ ---------- */
@@ -430,7 +437,7 @@ export default function ShindanClient() {
 
         {/* リンク：収益1本（PR表記）＋公式1本 */}
         <div className="mt-7 space-y-3">
-          {r.revenue && (
+          {A8_READY && r.revenue && (
             <a
               href={r.revenue.url}
               target="_blank"
