@@ -12,6 +12,7 @@ type Category = {
 const CATEGORIES: Category[] = [
   { emoji: "🚚", title: "引っ越し", desc: "やることリストを60秒で診断", href: "/moving", status: "live" },
   { emoji: "🚛", title: "引っ越し業者比較", desc: "一括見積もりで料金を比較", href: "/goods/moving", status: "live" },
+  { emoji: "💴", title: "お金・資産", desc: "あなたの資産タイプを60秒で診断", href: "/tools/shisan-shindan", status: "live" },
   { emoji: "🏢", title: "不動産", desc: "新居探し・売却・空き家査定", href: "/goods/realestate", status: "live" },
   { emoji: "🏛", title: "相続の相談窓口", desc: "弁護士・司法書士・税理士を比較", href: "/goods/inheritance", status: "live" },
   { emoji: "⚡", title: "電気・ガス・ネット", desc: "引っ越し先の回線・ライフライン比較", href: "/goods/lifeline", status: "live" },
