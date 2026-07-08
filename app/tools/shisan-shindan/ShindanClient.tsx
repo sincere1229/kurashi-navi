@@ -1,15 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Minori from "@/components/Minori";
 
 /* ============================================================
    わたしの資産タイプ診断 — 暮らしナビ
    設計書 v1.0 準拠（ゲート判定 → スコア → 安全側調整）
    ============================================================ */
-
-/* ---------- ナビゲーター：みのり ---------- */
-// ★暮らしナビの実際の画像パスに合わせて調整してください
-const MINORI_ICON = "@/components/Minori";
 
 /* ---------- リンク管理（差し替えはここだけ） ---------- */
 const LINKS = {
@@ -307,11 +304,9 @@ export default function ShindanClient() {
             あなたに合ったお金の守り方・育て方がわかる
           </p>
           <div className="mt-5 flex items-start gap-3 rounded-xl bg-green-50 p-4">
-            <img
-              src={MINORI_ICON}
-              alt="ナビゲーター みのり"
-              className="h-12 w-12 shrink-0 rounded-full border border-green-200 bg-white object-cover"
-            />
+            <div className="shrink-0">
+              <Minori size={56} variant="smile" />
+            </div>
             <p className="text-sm text-stone-700 leading-relaxed">
               「貯金だけでいいのかな？」「NISAって私に関係あるの？」——
               7つの質問に答えるだけで、あなたに合ったお金の守り方・育て方の
@@ -358,11 +353,9 @@ export default function ShindanClient() {
 
         <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
           <div className="flex items-start gap-3 mb-4">
-            <img
-              src={MINORI_ICON}
-              alt=""
-              className="h-10 w-10 shrink-0 rounded-full border border-green-200 bg-white object-cover"
-            />
+            <div className="shrink-0">
+              <Minori size={44} variant="smile" />
+            </div>
             <p className="text-xs text-stone-500 leading-relaxed pt-1">
               {q.minori}
             </p>
@@ -471,11 +464,9 @@ export default function ShindanClient() {
         {(familyLink || showSouzoku) && (
           <div className="mt-6 rounded-xl bg-green-50 p-4">
             <p className="flex items-center gap-2 text-xs text-stone-600 mb-2">
-              <img
-                src={MINORI_ICON}
-                alt=""
-                className="h-8 w-8 shrink-0 rounded-full border border-green-200 bg-white object-cover"
-              />
+              <span className="shrink-0">
+                <Minori size={36} variant="smile" />
+              </span>
               <span>あなたには、こちらの記事もお役に立つと思います🍀</span>
             </p>
             <div className="flex flex-col gap-2">
